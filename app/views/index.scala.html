@@ -1,5 +1,17 @@
-@()
+<!-- @() -->
 
-@main("Welcome to Play") {
-  <h1>Welcome Tejashree!</h1>
-}
+<!-- @main("Welcome to Play") { -->
+<!--   <h1>Welcome Tejashree! this is user list</h1> -->
+<!-- } -->
+@(message : String)
+
+<html>
+<head><title>All Users</title></head>
+<body>
+<!-- @for(user <- users){ -->
+<!-- <p>Name : @user.fName<p> -->
+
+<!-- } -->
+<h1>@message</h1>
+</body>
+</html>

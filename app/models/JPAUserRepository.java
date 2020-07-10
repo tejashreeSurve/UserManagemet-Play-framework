@@ -1,14 +1,13 @@
 package models;
  
-import javax.inject.*;
-import java.util.concurrent.*;
+import javax.inject.Inject;
 
-public class JpaUserRepository {
+public class JPAUserRepository {
 	 private JPAApi jpaApi;
 	  private DatabaseExecutionContext executionContext;
 
 	  @Inject
-	  public JPARepository(JPAApi api, DatabaseExecutionContext executionContext) {
+	  public JPAUserRepository(JPAApi api, DatabaseExecutionContext executionContext) {
 	    this.jpaApi = api;
 	    this.executionContext = executionContext;
 	  }

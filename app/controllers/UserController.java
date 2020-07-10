@@ -1,13 +1,18 @@
 package controllers;
 
+import java.util.Set;
+
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
-
 public class UserController extends Controller {
 
 	// get all user
 	public Result getAllUser() {
-		return ok(views.html.index.render());
+		Set<User> users = User.allUser();
+		String message = "helolo";
+	//	return ok(Json.toJson(users));
+		return ok(views.html.index.render(message));
 	}
 
 	// add new user

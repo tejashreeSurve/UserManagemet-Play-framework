@@ -1,8 +1,11 @@
 package models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 
-	public Integer userId;
+	public  Integer userId;
 	public String fName;
 	public String mName;
 	public String lName;
@@ -10,7 +13,6 @@ public class User {
 	public String password;
 
 	public User(Integer userId, String fName, String mName, String lName, String userEmail, String password) {
-		super();
 		this.userId = userId;
 		this.fName = fName;
 		this.mName = mName;
@@ -19,6 +21,34 @@ public class User {
 		this.password = password;
 	}
 
+	public static Set<User> users;
+	
+	static {
+		users =  new HashSet<>();
+		users.add(new User(1,"tejashree","vasudev","surve","tejutanvi773@gmail.com","teju123"));
+		users.add(new User(1,"tanvi","vasudev","surve","tanvi773@gmail.com","tanvi123"));
+		
+	}
+	
+	public static Set<User> allUser(){
+		return users;
+	}
+	
+	
+	public static User findById(Integer id) {
+		for(User user:users) {
+			if(id.equals(user.userId)) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
+	public static void addUser(User user) {
+		users.add(user);
+	}
+	
+	
 	public Integer getUserId() {
 		return userId;
 	}

@@ -1,0 +1,14 @@
+@(users : Set[User])
+
+<html>
+<head>
+<title>All Users</title>
+</head>
+<body>
+<h1>All Users</h1>
+@for(user <- users){
+<p>Name : @user.fName</p>
+}
+</body>
+
+</html>
