@@ -13,7 +13,10 @@ libraryDependencies += javaJdbc
 libraryDependencies += jdbc
 libraryDependencies ++= Seq(
   javaJpa,
-  "org.postgresql" % "postgresql" % "9.3-1102-jdbc4"
+   "org.hibernate" % "hibernate-entitymanager" % "4.3.5.Final",
+   "org.hibernate" % "hibernate-core" % "5.4.9.Final",
+   "org.postgresql" % "postgresql" % "42.2.12"
+ 
 )  
 
 
@@ -21,6 +24,5 @@ EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
 EclipseKeys.withSource := true
 EclipseKeys.withJavadoc := true
 
-libraryDependencies += javaJpa
 
 PlayKeys.externalizeResourcesExcludes += baseDirectory.value / "conf" / "META-INF" / "persistence.xml"

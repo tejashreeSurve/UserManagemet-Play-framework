@@ -5,9 +5,9 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET     /users						controllers.UserController.getAllUser()
-POST	/addUser			controllers.UserController.addUser()
-GET		/addUser				controllers.UserController.save()
+GET     /getUser					controllers.UserController.getUser()
+GET	/addUser			controllers.UserController.addUser()
+POST		/addUser				controllers.UserController.save(request : Request)
 
 #GET		/user/edit/:userId			controllers.UserController.editUser(userId : Integer)						
 #POST	/user/edit					controllers.UserController.updateUser

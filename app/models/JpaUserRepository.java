@@ -15,8 +15,8 @@ import play.db.jpa.JPAApi;
 public class JpaUserRepository implements UserRepository {
 	private final JPAApi jpaApi;
     private final DatabaseExecutionContext executionContext;
-
-    @Inject
+    
+	@Inject
     public JpaUserRepository(JPAApi jpaApi, DatabaseExecutionContext executionContext) {
         this.jpaApi = jpaApi;
         this.executionContext = executionContext;
@@ -25,13 +25,13 @@ public class JpaUserRepository implements UserRepository {
 	@Override
 	public CompletionStage<User> addUser(User user) {
 
-		return CompletableFuture.supplyAsync((Supplier<User>) ()->wrap(entityManager->insert(entityManager,user)),executionContext);
+		return CompletableFuture.supplyAsync( ()->wrap(entityManager->insert(entityManager,user)),executionContext);
 	}
 
 	@Override
 	public CompletionStage<Stream<User>> userList() {
 		// TODO Auto-generated method stub
-		return CompletableFuture.supplyAsync((Supplier<Stream<User>>) () -> wrap(entityManager -> userList(entityManager)), executionContext);
+		return CompletableFuture.supplyAsync( () -> wrap(entityManager -> userList(entityManager)), executionContext);
 	}
 
 	    private <T> T wrap(Function<EntityManager, T> function) {
@@ -44,7 +44,7 @@ public class JpaUserRepository implements UserRepository {
 	    }
 
 	    private Stream<User> userList(EntityManager entityManager) {
-	        List<User> user = entityManager.createQuery("select p from Person p", User.class).getResultList();
+	        List<User> user = entityManager.createQuery("select p from user p", User.class).getResultList();
 	        return user.stream();
 	    }
 	
