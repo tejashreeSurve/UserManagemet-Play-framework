@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Utility.ResponseHandle;
 import models.User;
+import models.UserRepository;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -27,12 +28,12 @@ public class UserController extends Controller {
 //	}
 FormFactory formFactory;
 UserServices userServices;
-
+UserRepository userRepository;
     public CompletionStage<Result> addUser(Http.Request request) {
     	 User user = formFactory.form(User.class).bindFromRequest(request).get();
-         return personRepository
-                 .add(person)
-                 .thenApplyAsync(p -> redirect(routes.PersonController.index()), ec.current());
+         return userRepository
+                 .addUser(user)
+                 .thenApplyAsync(p -> redirect(routes.UserController.index()), ec.current());
     	
 //        JsonNode json =Json.toJson(badRequest().body().toString());
 //        if (json == null) {
