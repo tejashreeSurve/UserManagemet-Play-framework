@@ -6,8 +6,8 @@
 GET     /                           controllers.HomeController.index
 
 GET     /users						controllers.UserController.getAllUser()
-POST	/addUser			controllers.UserController.addUser()
-GET		/addUser				controllers.UserController.save()
+POST	/user/addUser				controllers.UserController.addUser()
+GET		/users/addUser				controllers.UserController.save()
 
 #GET		/user/edit/:userId			controllers.UserController.editUser(userId : Integer)						
 #POST	/user/edit					controllers.UserController.updateUser

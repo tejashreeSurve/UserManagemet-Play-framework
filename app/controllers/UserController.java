@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Set;
+import java.util.concurrent.CompletionStage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import models.User;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import services.UserServices;
 public class UserController extends Controller {
@@ -24,9 +26,15 @@ public class UserController extends Controller {
 //		return ok(Json.toJson(users));
 //	}
 FormFactory formFactory;
+UserServices userServices;
 
-    public Result addUser() {
-     //   JsonNode json =Json.toJson(badRequest().body().toString());
+    public CompletionStage<Result> addUser(Http.Request request) {
+    	 User user = formFactory.form(User.class).bindFromRequest(request).get();
+         return personRepository
+                 .add(person)
+                 .thenApplyAsync(p -> redirect(routes.PersonController.index()), ec.current());
+    	
+//        JsonNode json =Json.toJson(badRequest().body().toString());
 //        if (json == null) {
 //            return badRequest(ResponseHandle.createResponse("Expecting JSON data", false));
 //        }
@@ -34,13 +42,16 @@ FormFactory formFactory;
 //        User user = UserServices.getInstance().addUser(Json.fromJson(json, User.class));
 //        JsonNode jsonObject = Json.toJson(user);
 //        return created(ResponseHandle.createResponse(jsonObject, true));
-  Form<User>  userform = formFactory.form(User.class);
+ Form<User>  userform = formFactory.form(User.class);
   return ok(views.html.addUser.render(userform));
     	
       }
     
     public Result save() {
-    return ok();	
+    	Form<User>  userform= formFactory.form(User.class);
+    	User user = userform.get();
+    	userServices.addUser(user);
+    	return redirect(routes.UserController.addUser());
     }
 
 

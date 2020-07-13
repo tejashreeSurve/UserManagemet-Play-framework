@@ -1,29 +1,30 @@
-@(userform : play.data.Form[User])(implicit  messagesProvider: MessagesProvider)
-
-@import helper._
+@(userform:Form[User])
 
 <html>
 <head>
-<title>
-Add User
-</title>
-<body>
-<h1>
-Add User
-</h1>
-
-@form(action = routes.UserController.save()){
-@inputText(userform("user.fName"))
-@inputText(userform("user.lName"))
-@inputText(userform("user.mName"))
-@inputText(userform("user.emil"))
-@inputText(userform("user.password"))
-
-<input type ="submit" value="Add User">
-}
-</body>
+<title>Add New User</title>
 </head>
-
-
-
-</html>
+<body>
+<h1 >------To Add new User fill the Form-----</h1>
+<form action="@routes.UserController.save()" method="POST">
+<label> <h3>Id :-</h3></label>
+<input name ="userId" type ="text">
+<br>
+<label> <h3>First Name :-</h3></label>
+<input name ="fName" type ="text">
+<br>
+<label> <h3>Middle Name :-</h3></label>
+<input name ="mName" type ="text">
+<br>
+<label> <h3>Last Name :-</h3></label>
+<input name ="lName" type ="text">
+<br>
+<label> <h3>Email Id :-</h3></label>
+<input name ="userEmail" type ="text">
+<br>
+<label> <h3>Password :-</h3></label>
+<input name ="password" type ="text">
+<br><br>
+<input type="submit" value= "Add User">
+	</body>
+</html>	

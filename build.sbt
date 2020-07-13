@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
 )  
 
 
+EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
 EclipseKeys.withSource := true
 EclipseKeys.withJavadoc := true
 

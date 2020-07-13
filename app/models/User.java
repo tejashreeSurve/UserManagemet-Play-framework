@@ -1,8 +1,16 @@
 package models;
 
-public class User {
+import javax.annotation.processing.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	public  Integer userId;
+@Entity
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Integer userId;
 	public String fName;
 	public String mName;
 	public String lName;
@@ -17,7 +25,7 @@ public class User {
 		this.userEmail = userEmail;
 		this.password = password;
 	}
-	
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -66,12 +74,10 @@ public class User {
 		this.password = password;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", fName=" + fName + ", mName=" + mName + ", lName=" + lName + ", userEmail="
 				+ userEmail + ", password=" + password + "]";
 	}
-	
 
 }
