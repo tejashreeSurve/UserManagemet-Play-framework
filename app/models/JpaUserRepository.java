@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
 import play.db.jpa.JPAApi;
-
+@Singleton
 public class JpaUserRepository implements UserRepository {
 	private final JPAApi jpaApi;
     private final DatabaseExecutionContext executionContext;

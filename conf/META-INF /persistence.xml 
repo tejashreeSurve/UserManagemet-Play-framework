@@ -7,8 +7,23 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <non-jta-data-source>DefaultDS</non-jta-data-source>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/userinfo"/>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+    
+              <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+           		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/userinfo"/>
+  				 <property name="hibernate.connection.username">postgres</property>
+        			<property name="hibernate.connection.password">teju</property>
+             
+                 <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> <!-- DB Dialect -->
+                 
+	        <!-- Print executed SQL to stdout -->
+        <property name="show_sql">true</property>
+  
+        <!-- Update database on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+           
+            
+            <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
+            <property name="hibernate.format_sql" value="true" /> <!-- Show SQL formatted -->
         </properties>
     </persistence-unit>
 
