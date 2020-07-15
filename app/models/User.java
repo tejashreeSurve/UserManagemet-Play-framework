@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userDetails")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
